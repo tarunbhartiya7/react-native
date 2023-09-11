@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 });
 
 const greeting = "Getting started with React Native!";
-const name = "Samoa";
+const name = "Neha";
 const message = <Text style={styles.text}>My name is {name}</Text>;
 
 const ComponentsScreen = () => {
