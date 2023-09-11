@@ -5,13 +5,13 @@ import ColorCounter from "../components/ColorCounter";
 const COLOR_INCREMENT = 10;
 const initialState = { red: 0, green: 0, blue: 0 };
 const reducer = (state, action) => {
-  switch (action.colorToChange) {
+  switch (action.type) {
     case "red":
-      return { ...state, red: state.red + action.amount };
+      return { ...state, red: state.red + action.payload };
     case "green":
-      return { ...state, green: state.green + action.amount };
+      return { ...state, green: state.green + action.payload };
     case "blue":
-      return { ...state, blue: state.blue + action.amount };
+      return { ...state, blue: state.blue + action.payload };
     default:
       return state;
   }
@@ -25,34 +25,28 @@ const SquareScreen = () => {
     <View>
       <ColorCounter
         onIncrease={() =>
-          red < 255 &&
-          dispatch({ colorToChange: "red", amount: COLOR_INCREMENT })
+          red < 255 && dispatch({ type: "red", payload: COLOR_INCREMENT })
         }
         onDecrease={() =>
-          red > 0 &&
-          dispatch({ colorToChange: "red", amount: -COLOR_INCREMENT })
+          red > 0 && dispatch({ type: "red", payload: -COLOR_INCREMENT })
         }
         color="Red"
       />
       <ColorCounter
         onIncrease={() =>
-          green < 255 &&
-          dispatch({ colorToChange: "green", amount: COLOR_INCREMENT })
+          green < 255 && dispatch({ type: "green", payload: COLOR_INCREMENT })
         }
         onDecrease={() =>
-          green > 0 &&
-          dispatch({ colorToChange: "green", amount: -COLOR_INCREMENT })
+          green > 0 && dispatch({ type: "green", payload: -COLOR_INCREMENT })
         }
         color="Green"
       />
       <ColorCounter
         onIncrease={() =>
-          blue < 255 &&
-          dispatch({ colorToChange: "blue", amount: COLOR_INCREMENT })
+          blue < 255 && dispatch({ type: "blue", payload: COLOR_INCREMENT })
         }
         onDecrease={() =>
-          blue > 0 &&
-          dispatch({ colorToChange: "blue", amount: -COLOR_INCREMENT })
+          blue > 0 && dispatch({ type: "blue", payload: -COLOR_INCREMENT })
         }
         color="Blue"
       />
